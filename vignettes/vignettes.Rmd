@@ -22,8 +22,9 @@ vignette: >
 __Installing the package.__ To install the _MethylMix_ package, the easiest way is through bioconductor:
 
 ```{r, eval=FALSE}
-source("http://bioconductor.org/biocLite.R")
-biocLite(MethylMix)
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install(MethylMix)
 ```
 
 Other ways to install MethylMix is to first download the appropriate file for 
