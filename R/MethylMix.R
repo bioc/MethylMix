@@ -111,13 +111,21 @@ MethylMix <- function(METcancer,
     if (missing(METcancer)) stop("Need to provide METcancer matrix")
     if (missing(GEcancer)) stop("Need to provide GEcancer matrix")
     stopifnot(
-        class(METcancer) == "matrix",
-        class(GEcancer) == "matrix",
-        class(METnormal) %in% c("matrix", "NULL"),
-        class(listOfGenes) %in% c("character", "NULL"),
-        class(filter) == "logical",
-        class(NoNormalMode) == "logical",
-        class(OutputRoot) == "character"
+	is(METcancer, "matrix"),
+	is(GEcancer, "matrix"),
+	is(filter, "logical"),
+	is(NoNormalMode, "logical"),
+	is(OutputRoot, "character"),
+	(is(METnormal, "matrix") | is(METnormal, "NULL")),
+	(is(listOfGenes, "character") | is(listOfGenes, "NULL"))
+
+        #class(METcancer) == "matrix",
+        #class(GEcancer) == "matrix",
+        #class(METnormal) %in% c("matrix", "NULL"),
+        #class(listOfGenes) %in% c("character", "NULL"),
+        #class(filter) == "logical",
+        #class(NoNormalMode) == "logical",
+        #class(OutputRoot) == "character"
     )
     
     # Keep only the genes provided by user
